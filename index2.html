@@ -1,0 +1,59 @@
+<!-- using the basic state and render components  -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" new="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+ </head>
+ <body>
+    <h1>Todo Application</h1>
+    
+        <input  id="txt" type="text" placeholder="Type something here"></input>
+        <button onclick="AddTodo()">Add Todo</button>
+        <div id="todos"></div>
+
+    <script>
+    
+    let todos = [];
+    let idCounter = 0 ;
+    function AddTodo(){
+        const inputvalue = document.querySelector("input").value;
+        todos.push({
+        id : idCounter++ , 
+        title:inputvalue  
+        })
+        render();
+    }
+    function Delete(){
+        todos = todos.filter(currentTodo => currentTodo !== todo);
+        // it checks if the current todo isn't the one to be deleted .
+    }
+
+    function CreateTodoComponent(todo){
+        const div = document.createElement("div");
+        const button = document.createElement("button");
+        const newEl= document.createElement("newEl");
+        button.innerHTML="Delete";
+        button.onclick=function(){
+            todos = todos.filter(t => t.id !== todo.id);
+            render();
+        };
+        newEl.innerHTML=todo.title;
+        div.append(newEl);
+        div.append(button);
+        
+        return div 
+    }
+    function render(){
+        document.querySelector("#todos").innerHTML="";
+        for(let i = 0 ; i<todos.length ; i++){
+            const element = CreateTodoComponent(todos[i]); //appending to the todos div
+            document.querySelector("#todos").appendChild(element);
+        }
+
+    }
+    </script>
+ </body>
+
+ </html>

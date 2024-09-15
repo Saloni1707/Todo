@@ -1,0 +1,32 @@
+<!-- without usign the State and render component -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo </title>
+</head>
+<body>
+    <div id="todos">
+    <h1>TODO LIST</h1>
+    <input id="input" type="text" placeholder="Type here something"></input>
+    <button onclick="AddTodo()">ADD</button>
+    </div>
+</body>
+<script>
+    
+    function AddTodo(){
+        const inputEl = document.getElementById("input").value;
+        const div = document.createElement("div");
+        div.innerHTML= "<div id='del'>" + inputEl + "<button id='del' onclick='Delete()'>Delete</button> ";
+
+        const parentEl = document.getElementById("todos");
+        parentEl.appendChild(div);
+    }
+    function Delete(){
+        const element = document.getElementById("del");
+        element.parentNode.removeChild(element); //*** btw notice it's parentNode here imp ***
+    }
+</script>
+</html>
