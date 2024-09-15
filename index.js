@@ -1,6 +1,6 @@
 // initialise empty package.json and for any node project using npm init -y
 //patch basically updates the files 
-
+//Understand basic HTTP server 
 const express = require("express")
 const app = express()
 //route handlers 
